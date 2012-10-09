@@ -7,6 +7,12 @@ module Rails
         alias :reload_without_translator! :reload!
 
         def reload!
+          app = Rails.application
+          if (app.paths.config rescue nil)
+            puts app.paths.config.routes
+          else
+            puts app.paths["config/routes"]
+          end
           result = reload_without_translator!
 
           route_sets.each do |routes|
