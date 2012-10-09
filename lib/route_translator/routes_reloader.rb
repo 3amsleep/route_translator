@@ -7,20 +7,11 @@ module Rails
         alias :reload_without_translator! :reload!
 
         def reload!
-          app = Rails.application
-          fn = if (app.paths.config rescue nil)
-            app.paths.config.routes
-          else
-            app.paths["config/routes"]
-          end
-          if fn 
-            fn = fn.first.to_s
-            File.open(fn, 'r') {|f| puts f.read} if File.exists?(fn)
-          end
 
           result = reload_without_translator!
 
           puts "before #{route_sets.inspect}"
+          puts paths
           route_sets.each do |routes|
             routes.default_locale = I18n.default_locale
             routes.translate_from_file
