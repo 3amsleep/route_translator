@@ -25,6 +25,8 @@ module Rails
             routes.translate_from_file
           end
 
+          route_sets.each{|routes| puts routes.inspect}
+
           result
         end
       end
