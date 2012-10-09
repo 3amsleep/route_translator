@@ -20,13 +20,14 @@ module Rails
 
           result = reload_without_translator!
 
+          puts "before #{route_sets.inspect}"
           route_sets.each do |routes|
             routes.default_locale = I18n.default_locale
             routes.translate_from_file
           end
 
-          puts route_sets.inspect
-          route_sets.each{|routes| puts routes.routes.inspect}
+          puts "after #{route_sets.inspect}"
+          # route_sets.each{|routes| puts routes.routes.inspect}
 
           result
         end
