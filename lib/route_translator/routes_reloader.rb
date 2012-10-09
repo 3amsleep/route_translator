@@ -5,6 +5,17 @@ module Rails
     if defined?(RoutesReloader)
       class RoutesReloader
         alias :reload_without_translator! :reload!
+        def load_paths
+          puts paths.inspect
+          paths.each do |path| 
+            if File.exists?(path)
+              File.open(path) do |f|
+                puts f.read
+              end
+            end
+            load(path) 
+          end
+        end
 
         def reload!
 
