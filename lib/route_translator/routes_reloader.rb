@@ -14,10 +14,10 @@ module Rails
             app.paths["config/routes"]
           end
           if fn
-            File.open(fn.to_s) do |f|
-              puts f.read
-            end
+            fn = fn.first.to_s
+            File.open(fn, 'r') {|f| puts f.read}
           end
+
           result = reload_without_translator!
 
           route_sets.each do |routes|

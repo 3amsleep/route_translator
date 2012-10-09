@@ -60,8 +60,9 @@ module RouteTranslator
     end
 
     def app_file(path, contents)
-      FileUtils.mkdir_p File.dirname("#{app_path}/#{path}")
-      File.open("#{app_path}/#{path}", 'w') do |f|
+      fn = File.join(app_path,path)
+      FileUtils.mkdir_p File.dirname(fn)
+      File.open(fn, 'w') do |f|
         f.puts contents
       end
     end
