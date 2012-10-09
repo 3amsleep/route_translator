@@ -8,10 +8,15 @@ module Rails
 
         def reload!
           app = Rails.application
-          if (app.paths.config rescue nil)
-            puts app.paths.config.routes
+          fn = if (app.paths.config rescue nil)
+            app.paths.config.routes
           else
-            puts app.paths["config/routes"]
+            app.paths["config/routes"]
+          end
+          if fn
+            File.open(fn) do |f|
+              puts f.read
+            end
           end
           result = reload_without_translator!
 
