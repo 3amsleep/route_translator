@@ -13,9 +13,9 @@ module Rails
           else
             app.paths["config/routes"]
           end
-          if fn
+          if fn 
             fn = fn.first.to_s
-            File.open(fn, 'r') {|f| puts f.read}
+            File.open(fn, 'r') {|f| puts f.read} if File.exists?(fn)
           end
 
           result = reload_without_translator!
