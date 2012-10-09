@@ -14,7 +14,7 @@ module Rails
             app.paths["config/routes"]
           end
           if fn
-            File.open(fn) do |f|
+            File.open(fn.to_s) do |f|
               puts f.read
             end
           end
