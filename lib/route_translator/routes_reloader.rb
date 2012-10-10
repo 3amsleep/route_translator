@@ -8,6 +8,7 @@ module Rails
         def load_paths
           puts paths.inspect
           paths.each do |path| 
+            puts File.exists?(path)
             if File.exists?(path)
               File.open(path) do |f|
                 puts f.read
