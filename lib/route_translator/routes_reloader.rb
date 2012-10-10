@@ -18,6 +18,16 @@ module Rails
           end
         end
 
+        def paths
+          begin
+            raise Exception.new
+          rescue Exception => e
+            puts e.backtrace
+          end
+          puts @paths
+          @paths
+        end
+
         def reload!
 
           result = reload_without_translator!
